@@ -6,6 +6,27 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/
 
+RUN wget -P ~/ https://github.com/admb-project/admb/archive/master.zip 
+    && unzip ~/master.zip 
+    && mv ~/*-master ~/admb
+    && rm ~/master.zip
+    && cd admb 
+    && make
+    && chmod 755 /usr/local/bin/admb
+    && export PATH=$PATH:/usr/local/bin/admb
+
+RUN wget -P ~/ https://github.com/nmfs-ost/ss3-source-code/archive/master.zip 
+    && unzip ~/master.zip -d /usr/local/bin
+    && rm ~/master.zip
+    && mv /usr/local/bin/ss3-source-code
+    && rm /usr/local/bin/ss3-source-code-main
+    && chmod 777 /usr/local/bin/ss3-source-code
+    && cd /usr/local/bin/ss3-source-code
+    && mkdir /usr/local/bin/SS330
+    && chmod 777 /usr/local/bin/SS330
+    && /bin/bash ./Make_SS_330_new.sh -b SS330 -p
+    &&  export PATH=$PATH:/usr/local/bin/SS330
+    
 # set CRAN repo to the RStudio mirror
 RUN echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'))" >> /usr/local/lib/R/etc/Rprofile.site
 RUN R -e 'options(download.file.method = "libcurl")'
