@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Clone SS source and compile with optimization for ss docker image
+# Clone SS3 source and compile with optimization for ss3 docker image
 
 INST=/usr/bin
 SS3_HOME=$INST/ss3_exe
