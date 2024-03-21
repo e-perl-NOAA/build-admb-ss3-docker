@@ -37,7 +37,7 @@ jobs:
       with:
         images: |
           egugliotti/build-admb-ss3-docker
-          ghcr.io/e-gugliotti-noaa/build-admb-ss3-docker
+          ghcr.io/e-perl-noaa/build-admb-ss3-docker
         
     - name: Build and push
       uses: docker/build-push-action@v4
