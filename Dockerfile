@@ -23,6 +23,7 @@ ENV PATH=$ADMB_AD2CSV:$ADMB_HOME/bin:$PATH
 COPY clean_admb $ADMB_HOME
 COPY install_admb.sh $INST/install_admb.sh
 WORKDIR $INST
+RUN chmod a+x install_admb.sh
 RUN ./install_admb.sh
 WORKDIR $HOME
 
