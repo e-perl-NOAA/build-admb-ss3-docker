@@ -28,7 +28,6 @@ RUN ./install_admb.sh
 WORKDIR $HOME
 
 # Install SS3 and set corresponding environment variables
-COPY clean_ss3 $INST
 COPY install_ss3.sh $INST/install_ss3.sh
 ENV SS3_EXE_NAME=ss3
 ENV SS3_HOME=$INST/ss3_exe
