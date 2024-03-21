@@ -36,14 +36,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: |
-          egugliotti/ss3-docker
-          ghcr.io/e-gugliotti-noaa/ss3-docker
-
-    #- name: Build the Docker image
-      #run: docker build . --file Dockerfile --tag ghcr.io/e-gugliotti-noaa/ss3-docker:latest
+          egugliotti/build-admb-ss3-docker
+          ghcr.io/e-gugliotti-noaa/build-admb-ss3-docker
         
-    #- name: Push the Docker image
-      #run: docker push ghcr.io/e-gugliotti-noaa/ss3-docker:latest
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
