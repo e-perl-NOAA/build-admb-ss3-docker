@@ -3,7 +3,7 @@
 # Clone SS source and compile with optimization for ss docker image
 
 INST=/usr/bin
-SS3_HOME=$INST/ss3
+SS3_HOME=$INST/ss3_exe
 
 cd $INST
 git clone --branch v3.30.22 https://github.com/nmfs-stock-synthesis/stock-synthesis $SS3_HOME
