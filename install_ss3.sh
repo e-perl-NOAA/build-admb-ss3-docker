@@ -6,7 +6,7 @@ INST=/usr/bin
 SS3_HOME=$INST/ss3_exe
 
 cd $INST
-git clone --branch v3.30.22 https://github.com/nmfs-ost/ss3-source-code $SS3_HOME
+git clone --branch v3.30.22.1 https://github.com/nmfs-ost/ss3-source-code $SS3_HOME
 cd $SS3_HOME
 cat \
 SS_versioninfo_330opt.tpl \
@@ -30,6 +30,6 @@ SS_write_ssnew.tpl \
 SS_write_report.tpl \
 SS_ALK.tpl \
 SS_timevaryparm.tpl \
-SS_tagrecap.tpl > ss.tpl
+SS_tagrecap.tpl > ss3.tpl
 #
 admb -f ss3
