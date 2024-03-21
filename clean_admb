@@ -1,4 +1,7 @@
 # From https://github.com/cgrandin/docker-projects/blob/master/hake/clean_admb
+
+#!/bin/bash
+
 # Clean ADMB output from the current directory
 rm -f variance
 rm -f eigv.rpt
