@@ -6,7 +6,7 @@ INST=/usr/bin
 SS3_HOME=$INST/ss3_exe
 
 cd $INST
-git clone --branch v3.30.22 https://github.com/nmfs-stock-synthesis/stock-synthesis $SS3_HOME
+git clone --branch v3.30.22 https://github.com/nmfs-ost/ss3-source-code $SS3_HOME
 cd $SS3_HOME
 cat \
 SS_versioninfo_330opt.tpl \
