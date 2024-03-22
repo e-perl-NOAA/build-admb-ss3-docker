@@ -1,9 +1,8 @@
 # Install R packages for hake assessment docker image
 
-install.packages(c("remotes","purrr","usethis"))
+install.packages(c("remotes","purrr"))
 library(remotes)
 library(purrr)
-library(usethis)
 
 # These are the packages on GitHub, in alphabetical order
 github_pac_lst <- c("r4ss/r4ss",
@@ -19,7 +18,7 @@ walk(github_pac_lst, \(pkg){
 pac_lst <- c(
   "corrplot", "cowplot", "data.table", "data.tree", "date",
   "future", "furrr", "ggpubr", "glue", "grDevices", "grid", "gridExtra", 
-  "gridGraphics", "gtable", "here", "knitr", "magick", "parallelly", 
+  "gridGraphics", "gtable", "knitr", "magick", "parallelly", 
   "RColorBrewer", "readr", "scales", "sf", "tidyverse",
   "tidyselect", "tictoc", "tools", "utils", "with")
 
