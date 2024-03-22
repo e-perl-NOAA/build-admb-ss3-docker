@@ -46,10 +46,11 @@ RUN rm install_r_packages.R
 COPY rstudio-prefs.json $HOME/.config/rstudio/rstudio-prefs.json
 RUN chmod 777 $HOME/.config/rstudio/rstudio-prefs.json
 
+# ENV SS3_TEST_MODELS=$HOME/github/ss3-test-models
+# RUN mkdir -p $SS3_TEST_MODELS
 
-# git clone --branch v3.30.22.1 https://github.com/nmfs-ost/ss3-test-models
+# RUN git clone --branch v3.30.22.1 https://github.com/nmfs-ost/ss3-test-models $SS3_TEST_MODELS
 
-# SRV_DIR="/srv"
 # REPO_DIR= $TEST_MODELS_HOME
 
 # docker run \
@@ -57,49 +58,8 @@ RUN chmod 777 $HOME/.config/rstudio/rstudio-prefs.json
 #   --rm \
 #   -p 8787:8787 \
 #   -e PASSWORD=a \
-#   --mount type=bind,source=$SRV_DIR,target=/srv \
-#   --mount type=bind,source=$REPO_DIR,target=/home/rstudio/github/pacific-hake/hake-assessment \
-#   cgrandin/hake \
+#   --mount type=bind,source=$REPO_DIR,target=/home/rstudio/github/ss3-test-models \
+#   egugliotti/build-admb-ss3-docker \
 #   bash
-
-# RUN apt-get update \
-#     && apt-get install -y make gcc g++ cmake clang git libssl-dev libxml2 libxml2-dev openssl sudo wget curl \
-#     && apt-get install --assume-yes make gcc g++ cmake clang git libssl-dev libxml2 libxml2-dev openssl sudo wget curl \
-#     && apt-get clean \
-#     && rm -rf /var/lib/apt/lists/
-
-# RUN wget -P ~/ https://github.com/admb-project/admb/archive/master.zip 
-#     && unzip ~/master.zip 
-#     && mv ~/*-master ~/admb
-#     && rm ~/master.zip
-#     && cd admb 
-#     && make
-#     && chmod 755 /usr/local/bin/admb
-#     && export PATH=$PATH:/usr/local/bin/admb
-
-# RUN wget -P ~/ https://github.com/nmfs-ost/ss3-source-code/archive/master.zip 
-#     && unzip ~/master.zip -d /usr/local/bin
-#     && rm ~/master.zip
-#     && mv /usr/local/bin/ss3-source-code
-#     && rm /usr/local/bin/ss3-source-code-main
-#     && chmod 777 /usr/local/bin/ss3-source-code
-#     && cd /usr/local/bin/ss3-source-code
-#     && mkdir /usr/local/bin/SS330
-#     && chmod 777 /usr/local/bin/SS330
-#     && /bin/bash ./Make_SS_330_new.sh -b SS330 -p
-#     &&  export PATH=$PATH:/usr/local/bin/SS330
-    
-# set CRAN repo to the RStudio mirror
-# RUN echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'))" >> /usr/local/lib/R/etc/Rprofile.site
-# RUN R -e 'options(download.file.method = "libcurl")'
-# RUN R -e 'Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS="true")'
-# RUN R -e "install.packages(c('remotes', 'parallel', 'snowfall', 'purrr', 'furrr', 'pak', 'devtools', 'dplyr', 'ggplot2', 'data.table', 'magrittr', 'mvtnorm', 'scales', 'plyr', 'grid', 'png', 'utf8', 'tidyverse', 'httr'))"
-
-# RUN R -e 'pak::pkg_install("r4ss/r4ss")' \
-#     && R -e 'pak::pkg_install("jabbamodel/ss3diags")' \
-#     && R -e 'pak::pkg_install("ss3sim/ss3sim")'
- #   && R -q -e "pak::pkg_intall('flr/FLCore')" \
- #   && R -q -e "pak::pkg_intall('flr/ggplotFL')" \
- #   && R -q -e "pak::pkg_intall('flr/kobe')"
 
 # CMD ["/bin/bash"]
