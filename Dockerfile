@@ -36,6 +36,32 @@ RUN chmod a+x install_ss3.sh
 RUN ./install_ss3.sh
 WORKDIR $HOME
 
+# Install R
+COPY install_r_packages.R $HOME
+RUN R -e "install.packages('here'); \
+          source(here::here('install_r_packages.R'))"
+          
+RUN rm install_r_packages.R
+
+COPY rstudio-prefs.json $HOME/.config/rstudio/rstudio-prefs.json
+RUN chmod 777 $HOME/.config/rstudio/rstudio-prefs.json
+
+
+# git clone --branch v3.30.22.1 https://github.com/nmfs-ost/ss3-test-models
+
+# SRV_DIR="/srv"
+# REPO_DIR= $TEST_MODELS_HOME
+
+# docker run \
+#   -it \
+#   --rm \
+#   -p 8787:8787 \
+#   -e PASSWORD=a \
+#   --mount type=bind,source=$SRV_DIR,target=/srv \
+#   --mount type=bind,source=$REPO_DIR,target=/home/rstudio/github/pacific-hake/hake-assessment \
+#   cgrandin/hake \
+#   bash
+
 # RUN apt-get update \
 #     && apt-get install -y make gcc g++ cmake clang git libssl-dev libxml2 libxml2-dev openssl sudo wget curl \
 #     && apt-get install --assume-yes make gcc g++ cmake clang git libssl-dev libxml2 libxml2-dev openssl sudo wget curl \
