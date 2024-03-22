@@ -29,13 +29,11 @@ WORKDIR $HOME
 
 # Install SS3 and set corresponding environment variables
 COPY install_ss3.sh $INST/install_ss3.sh
-ENV SS3_EXE_NAME=ss3
 ENV SS3_HOME=$INST/ss3_exe
 ENV PATH=$SS3_HOME:$PATH
 WORKDIR $INST
 RUN chmod a+x install_ss3.sh
 RUN ./install_ss3.sh
-RUN mv ss3_exe/ss3 ss3/$SS3_EXE_NAME
 WORKDIR $HOME
 
 # RUN apt-get update \
