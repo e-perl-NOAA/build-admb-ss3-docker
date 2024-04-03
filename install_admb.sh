@@ -1,5 +1,8 @@
-# From https://github.com/cgrandin/docker-projects/blob/master/hake/install_admb.sh
 #!/bin/bash
+
+# From https://github.com/cgrandin/docker-projects/blob/master/hake/install_admb.sh
+
+
 POSITIONAL=()
 set -- "${POSITIONAL[@]}" # restore positional parameters
 
@@ -32,6 +35,8 @@ sed -i 's/\r//' scripts/admb/admb
 
 num_cpus=`cat /proc/cpuinfo | grep processor | wc -l`
 num_cpus_minus1=$((num_cpus-1))
+# Run `the 'make' command in parallel (available on Linux/Mac only),
+# reducing the compile time by several orders of magnitude.
 make -j $num_cpus_minus1
 
 # This link is required for the examples to build
@@ -40,6 +45,9 @@ ln -s build/admb/bin/admb admb || true
 # Contrib libraries need to be renamed, use symbolic links instead
 cd $admb_dir/build/admb/lib
 
+# These version numbers (g++9.a) will have to be changed in the future,
+# but I was lazy and hard-coded them. If the script breaks, it is probably
+# this
 ln -s libadmb-x86_64-linux-g++9.a libadmb.a || true
 ln -s libadmbo-x86_64-linux-g++9.a libadmbo.a || true
 
