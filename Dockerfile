@@ -48,9 +48,6 @@ RUN R -e "install.packages('here'); \
           
 RUN rm install_r_packages.R
 
-# Do this to plot in the "plot" panel in RStudio server
-RUN R -e "options(device = "RStudioGD")"
-
 ENV SS3_TEST_MODELS=$HOME/github/nmfs-ost/ss3-test-models
 RUN mkdir -p $SS3_TEST_MODELS
 
@@ -76,3 +73,6 @@ WORKDIR $SS3_TEST_MODELS
 
 # CMD ["/bin/bash"]
 # had to use -v instead of --mount type=bind,source=$REPO_DIR,target=/home/rstudio/github/nmfs-ost/ss3-test-models \ 
+
+# Needed to plot in the "plot" panel in Rstudio server
+# options(device = "RStudioGD")
