@@ -46,12 +46,13 @@ RUN rm install_r_packages.R
 COPY rstudio-prefs.json $HOME/.config/rstudio/rstudio-prefs.json
 RUN chmod 777 $HOME/.config/rstudio/rstudio-prefs.json
 
-# ENV SS3_TEST_MODELS=$HOME/github/ss3-test-models
-# RUN mkdir -p $SS3_TEST_MODELS
+ENV SS3_TEST_MODELS=$HOME/github/ss3-test-models
+RUN mkdir -p $SS3_TEST_MODELS
 
-# RUN git clone --branch v3.30.22.1 https://github.com/nmfs-ost/ss3-test-models $SS3_TEST_MODELS
+RUN git clone --branch v3.30.22.1 https://github.com/nmfs-ost/ss3-test-models $SS3_TEST_MODELS
 
-# REPO_DIR= $TEST_MODELS_HOME
+# You will need to run the following in docker
+# REPO_DIR= $HOME/github/ss3-test-models
 
 # docker run \
 #   -it \
