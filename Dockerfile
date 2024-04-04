@@ -60,7 +60,7 @@ WORKDIR $SS3_TEST_MODELS
 
 # git clone --branch v3.30.22.1 https://github.com/nmfs-ost/ss3-test-models
 
-# REPO_DIR=/workspaces/build-admb-ss3-docer/ss3-test-models
+# REPO_DIR=/workspaces/build-admb-ss3-docker/ss3-test-models
 # docker pull egugliotti/build-admb-ss3-docker:main
 # docker run \
 #   -it \
@@ -71,6 +71,8 @@ WORKDIR $SS3_TEST_MODELS
 #   egugliotti/build-admb-ss3-docker:main \
 #   bash
 
+# docker pull egugliotti/build-admb-ss3-docker:main
+# docker run -it --rm -p 8787:8787 -e PASSWORD=a -v $REPO_DIR:/home/rstudio/github/nmfs-ost/ss3-test-models egugliotti/build-admb-ss3-docker:main bash
 # CMD ["/bin/bash"]
 # had to use -v instead of --mount type=bind,source=$REPO_DIR,target=/home/rstudio/github/nmfs-ost/ss3-test-models \ 
 
