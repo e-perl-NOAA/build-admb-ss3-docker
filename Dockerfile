@@ -58,23 +58,32 @@ WORKDIR $SS3_TEST_MODELS
 
 # You will need to run the following in docker
 
-# git clone --branch v3.30.22.1 https://github.com/nmfs-ost/ss3-test-models
+# git clone --branch v3.30.22.1 https://github.com/nmfs-ost/ss3-test-models your computer, preferrably somewhere within you $HOME directory.
+# Go to your terminal and type in $HOME. This path will differ between windows, mac, and linux machines.
+# For example, my home directory on my windows is /c/Users/elizabeth.gugliotti.
+# I have my ss3-test-models repo stored under /c/Users/elizabeth.gugliotti/Documents/github_repos/stock-synthesis/ss3-test-models
+# I could just write this as $HOME/Documents/github_repos/stock-synthesis/ss3-test-models
+# On my mac, which is where I typically use docker it's slightly different
 
-# REPO_DIR=/workspaces/build-admb-ss3-docker/ss3-test-models
+# You will run the code below with the source=$HOME/wherever-you-store-your-files,target=/home/rstudio/wherever-you-want-files-stored
+# This will mount local files onto the container for you to use there
+# You can also change the password from a to something else if you wish
+
 # docker pull egugliotti/build-admb-ss3-docker:main
 # docker run \
 #   -it \
 #   --rm \
 #   -p 8787:8787 \
 #   -e PASSWORD=a \
-#   -v $REPO_DIR:/home/rstudio/github/nmfs-ost/ss3-test-models
-#   egugliotti/build-admb-ss3-docker:main \
-#   bash
+#   --mount type=bind,source=$HOME/Documents/github_repos/ss3-test-models,target=/home/rstudio/github/ss3-test-models
+#   egugliotti/build-admb-ss3-docker:main
 
 # docker pull egugliotti/build-admb-ss3-docker:main
-# docker run -it --rm -p 8787:8787 -e PASSWORD=a -v $REPO_DIR:/home/rstudio/github/nmfs-ost/ss3-test-models egugliotti/build-admb-ss3-docker:main bash
+# docker run -it --rm -p 8787:8787 -e PASSWORD=a --mount type=bind,source=$HOME/Documents/github_repos/ss3-test-models,target=/home/rstudio/github/ss3-test-models egugliotti/build-admb-ss3-docker:main
+
+# once docker container is running go to your browser and type in http://localhost:8787
+# username is rstudio, password is a or whatever you put after password in running the docker image
 # CMD ["/bin/bash"]
-# had to use -v instead of --mount type=bind,source=$REPO_DIR,target=/home/rstudio/github/nmfs-ost/ss3-test-models \ 
 
 # Needed to plot in the "plot" panel in Rstudio server
 # options(device = "RStudioGD")
