@@ -75,11 +75,9 @@ WORKDIR $SS3_TEST_MODELS
 #   --rm \
 #   -p 8787:8787 \
 #   -e PASSWORD=a \
-#   --mount type=bind,source=$HOME/Documents/github_repos/ss3-test-models,target=/home/rstudio/github/ss3-test-models
+#   --mount type=bind,source=$HOME/Documents/github_repos/ss3-test-models,target=/home/rstudio/github/ss3-test-models \
+#   --mount type=bind,source=$HOME/.gitconfig,target=/home/rstudio/.gitconfig \
 #   egugliotti/build-admb-ss3-docker:main
-
-# docker pull egugliotti/build-admb-ss3-docker:main
-# docker run -it --rm -p 8787:8787 -e PASSWORD=a --mount type=bind,source=$HOME/Documents/github_repos/ss3-test-models,target=/home/rstudio/github/ss3-test-models egugliotti/build-admb-ss3-docker:main
 
 # once docker container is running go to your browser and type in http://localhost:8787
 # username is rstudio, password is a or whatever you put after password in running the docker image
