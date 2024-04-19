@@ -1,6 +1,6 @@
 # build-admb-ss3-docker
 
-This Dockerfile:
+## This Dockerfile
 - Uses the [rocker/tidyverse image](https://rocker-project.org/images/versioned/rstudio.html)
 - Builds ADMB from source and puts it in the $PATH
 - Builds [Stock Synthesis (SS3)](https://github.com/nmfs-ost/ss3-source-code) version 3.30.21.1 and puts in $PATH
@@ -15,6 +15,8 @@ This Dockerfile:
   - {parallelly}
   - etc. (see [install_r_packages.R](https://github.com/e-perl-NOAA/build-admb-ss3-docker/blob/main/install_r_packages.R) for the full list of installed packages)
 
+## How to use this Docker image
+### Simple Usage
 To use this Docker image locally you will need to have Docker Desktop installed on your computer (if you are with NMFS, this will likely involve IT). You can also use this image in Codespaces, although for that I recommend using the ss3 codespaces .devcontainer.json file rather than the docker image.
 
 I suggest that you use the following workflow to pull and run this Dockerfile:
@@ -26,13 +28,23 @@ I suggest that you use the following workflow to pull and run this Dockerfile:
 - Open up your preferred browser and type in http://localhost:8787
 - Enter the Username (rstudio unless configured otherwise by including `-e USERNAME=username` in the `docker run` command) and the Password (the password you set up in the `docker run` command, in this case, its a).
 
+### Usage with Mounting Files and .gitconfig file
 If you would like to mount local files onto the Docker container to have available for you there, the following is an example of how to do that using the [ss3-test-models GitHub repository](https://github.com/nmfs-ost/ss3-test-models)
 - Run `git clone --branch v3.30.22.1 https://github.com/nmfs-ost/ss3-test-models` in a terminal on your computer, preferrably somewhere within you $HOME directory.
 - Go to your terminal and type in `$HOME`. This path will differ between windows, mac, and linux machines.
 - For example, my home directory on my windows is /c/Users/elizabeth.gugliotti. I have my ss3-test-models repo stored under /c/Users/elizabeth.gugliotti/Documents/github_repos/stock-synthesis/ss3-test-models. I could just write this as $HOME/Documents/github_repos/stock-synthesis/ss3-test-models. On my mac, which is where I typically use docker it's slightly different
+- This method also assumes that you have already gone through the step to [connect to GitHub](#connect-to-github) on your local machine so that you have a .gitconfig file to mount on the container and automatically be able to connect to GitHub. This step is not necessary and you can always [connect to GitHub](#connect-to-github) once in the container.
+
 - Run the following in a terminal:
   ```
-  docker run -it --rm -p 8787:8787 -e PASSWORD=a --mount type=bind,source=$HOME/Documents/github_repos/ss3-test-models,target=/home/rstudio/github/ss3-test-models egugliotti/build-admb-ss3-docker:main
+  docker run \
+   -it \
+   --rm \
+   -p 8787:8787 \
+   -e PASSWORD=a \
+   --mount type=bind,source=$HOME/Documents/github_repos/ss3-test-models,target=/home/rstudio/github/ss3-test-models \
+   --mount type=bind,source=$HOME/.gitconfig,target=/home/rstudio/.gitconfig \
+   egugliotti/build-admb-ss3-docker:main
   ```
 - source is where you have your files stored on your machine, target is where you will have your files stored on the container
 
