@@ -3,7 +3,7 @@
 ## This Dockerfile
 - Uses the [rocker/tidyverse image](https://rocker-project.org/images/versioned/rstudio.html)
 - Builds ADMB from source and puts it in the $PATH
-- Builds [Stock Synthesis (SS3)](https://github.com/nmfs-ost/ss3-source-code) version 3.30.21.1 and puts in $PATH
+- Builds [Stock Synthesis (SS3)](https://github.com/nmfs-ost/ss3-source-code) version 3.30.22.1 and puts in $PATH
 - Installs R packages using associated with SS3 including:
   - {[r4ss](https://github.com/r4ss/r4ss)} - Also contains the get_ss3_exe() function to download the SS3 executable if the user would like to use this option; see the {r4ss} [documentation](https://r4ss.github.io/r4ss/articles/r4ss-intro-vignette.html) for more details
   - {[ss3sim](https://github.com/ss3sim/ss3sim)}
