@@ -35,7 +35,8 @@ If you would like to mount local files onto the Docker container to have availab
 - For example, my home directory on my windows is /c/Users/elizabeth.gugliotti. I have my ss3-test-models repo stored under /c/Users/elizabeth.gugliotti/Documents/github_repos/stock-synthesis/ss3-test-models. I could just write this as $HOME/Documents/github_repos/stock-synthesis/ss3-test-models. On my mac, which is where I typically use docker it's slightly different
 - This method also assumes that you have already gone through the step to [connect to GitHub](#connect-to-github) on your local machine so that you have a .gitconfig file to mount on the container and automatically be able to connect to GitHub. This step is not necessary and you can always [connect to GitHub](#connect-to-github) once in the container.
 
-- Run the following in a terminal:
+#### Locally
+- After cloning the ss3-test-models repo or using model files on your local machine (changing the location and name after $HOME/ to where your model files are), run the following in a terminal:
   ```
   docker run \
    -it \
@@ -48,7 +49,19 @@ If you would like to mount local files onto the Docker container to have availab
   ```
 - source is where you have your files stored on your machine, target is where you will have your files stored on the container
 
-## Connect to GitHub
+#### Using GitHub Codespaces
+- After cloning the ss3-test-models repo or after opening a codespace in a repo with your model files, run the following in the terminal on codespaces - you shouldn't have a .gitconfig file in a repository so if you want to configure settings in a codespace, you should do that after the container is running using the lines in the [Connect to GitHub](#connect-to-github) section.
+  ```
+  docker run \
+   -it \
+   --rm \
+   -p 8787:8787 \
+   -e PASSWORD=a \
+   --mount type=bind,source=$HOME/workspaces/*insert repo name where codespace is opened here*/ss3-test-models,target=/home/rstudio/github/ss3-test-models \
+   egugliotti/build-admb-ss3-docker:main
+  ```
+
+### Connect to GitHub once in the Container
 - Open up a terminal and enter the following:
   ```
   git config --global user.name "Your Name"
@@ -56,7 +69,7 @@ If you would like to mount local files onto the Docker container to have availab
   git config --global credential.helper store
   ```
 
-## Stop image
+## Stop Image
 - Run the following commands
   ```
   docker ps
