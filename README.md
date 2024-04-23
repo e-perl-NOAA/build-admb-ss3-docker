@@ -60,6 +60,8 @@ If you would like to mount local files onto the Docker container to have availab
    --mount type=bind,source=$HOME/workspaces/*insert repo name where codespace is opened here*/ss3-test-models,target=/home/rstudio/github/ss3-test-models \
    egugliotti/build-admb-ss3-docker:main
   ```
+- A pop-up will appear in codespaces for you to click to open up your port to RStudio in a web browser
+- Other options are to go to PORTS right next to TERMINAL and click on the world icon next to the port you created OR to put http://localhost:8787 in your browser
 
 ### Connect to GitHub once in the Container
 - Open up a terminal and enter the following:
