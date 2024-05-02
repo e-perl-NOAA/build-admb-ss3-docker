@@ -46,3 +46,13 @@ jobs:
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
+
+    - name: make artifact
+      run: echo "Test artifact" >> test_file.txt
+
+    - name: Archive warnings text file
+      if: always()
+      uses: actions/upload-artifact@main
+      with:
+        name: 'test_file.txt'
+        path: test_file.txt
