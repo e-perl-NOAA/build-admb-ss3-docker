@@ -103,7 +103,7 @@ If you would like to mount local files onto the Docker container to have availab
         token = YOUR-TOKEN-STRING
     ``` 
 ### Using Credentials Manager
-- [Instructions on how to use the `usethis` package to manage GitHub credentials](https://gist.github.com/Z3tt/3dab3535007acf108391649766409421).
+- [Instructions on how to use the {usethis} package to manage GitHub credentials](https://gist.github.com/Z3tt/3dab3535007acf108391649766409421).
   
 ## Stop Image
 - Run the following commands
