@@ -65,7 +65,24 @@ If you would like to mount local files onto the Docker container to have availab
 - A pop-up will appear in codespaces for you to click to open up your port to RStudio in a web browser
 - Other options are to go to PORTS right next to TERMINAL and click on the world icon next to the port you created OR to put http://localhost:8787 in your browser
 
+### Committing to GitHub
+#### By adding a git repository to an existing project
+- Once you are in the RStudio container, click `Tools` > `Project Options > `Git/SVN` and choose to use git
+- In terminal run `git remote add origin https://github.com/[YourUsername]/[YourRepoName].git`
+- Then run `git push -u origin --all`
+  
+#### By starting a new project
+- Once you are in the RStudio container, click `File` in the lefthand corner, then `New Project`.
+- Choose `Version Control` > `Git`.
+- Copy the repository URL (you can find this under the `<> Code` button `Local` option where it will say "Clone").
+- Give the project directory a name (e.g., SS-DL-tool-fork) and click `Create Project`.
+- Go to the .gitignore file and comment out the Scenarios and the shiny_bookmarks lines so that git tracks those files too.
+- Go through the [connect to GitHub](#connect-to-github) steps.
+- Run the SAC tool IN YOUR FORK (you can do this with your files and specifications or example bookmarked input and files).
+- Commit and push the changes to your fork of the SAC tool.
+- 
 ## Connect to GitHub
+### Using git config
 **This step is essential if you would like to make/save changes in a GitHub repository.**
 - Open up a terminal in RStudio and enter the following:
   ```
@@ -85,7 +102,9 @@ If you would like to mount local files onto the Docker container to have availab
   	    user = your-username
         token = YOUR-TOKEN-STRING
     ``` 
-
+### Using Credentials Manager
+- [Instructions on how to use the `usethis` package to manage GitHub credentials](https://gist.github.com/Z3tt/3dab3535007acf108391649766409421).
+  
 ## Stop Image
 - Run the following commands
   ```
